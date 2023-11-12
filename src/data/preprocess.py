@@ -6,8 +6,6 @@ from ..utils.index import actions, DATA_PATH, SEQUENCE_LENGTH
 
 label_map = { label: num for num, label in enumerate(actions) }
 
-print(label_map)
-
 sequences, labels = [], []
 for action in actions:
     for sequence in np.array(os.listdir(os.path.join(DATA_PATH, action))).astype(int):
