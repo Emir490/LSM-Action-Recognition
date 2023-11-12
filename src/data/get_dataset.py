@@ -1,13 +1,7 @@
 import os
 import json
 import numpy as np
-from ..utils.index import extract_keypoints
-
-DATA_PATH = 'data/Signs'
-NO_SEQUENCES = 30
-SEQUENCE_LENGTH = 30
-
-actions = np.array(['J', 'Ñ', 'Z'])
+from ..utils.index import extract_keypoints, actions, NO_SEQUENCES, SEQUENCE_LENGTH, DATA_PATH
 
 for action in actions:
     for sequence in range(NO_SEQUENCES):
