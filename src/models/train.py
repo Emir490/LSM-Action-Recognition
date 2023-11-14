@@ -5,7 +5,7 @@ from keras.layers import LSTM, Dense
 from keras.models import Sequential
 from sklearn.metrics import multilabel_confusion_matrix, accuracy_score
 from ..utils.index import actions
-from ..data.preprocess import X_train, y_train, X_test, y_test
+from ..data.preprocess import X_train, y_train, X_test, y_test, X_val, y_val
 
 log_dir = os.path.join('Logs')
 tb_callback = TensorBoard(log_dir)
@@ -17,7 +17,8 @@ model = Sequential([
 ])
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit(X_train, y_train, epochs=100, batch_size=32, callbacks=[tb_callback])
+# Including validation data in training
+model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_val, y_val), callbacks=[tb_callback])
 model.summary()
 
 res = model.predict(X_test)

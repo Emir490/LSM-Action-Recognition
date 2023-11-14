@@ -68,7 +68,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         # Read feed
         ret, frame = cap.read()
         
-         # Flip frame horizontally (mirror mode off)
+        # Flip frame horizontally (mirror mode off)
         frame = cv2.flip(frame, 1)
         
         # Make detections

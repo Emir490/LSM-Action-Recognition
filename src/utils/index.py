@@ -1,10 +1,10 @@
 import numpy as np
 
-DATA_PATH = 'data/Signs'
-NO_SEQUENCES = 30
+DATA_PATH = 'data/Actions'
+NO_SEQUENCES = 90
 SEQUENCE_LENGTH = 30
 
-actions = np.array(['J', 'Ñ', 'Z'])
+actions = np.array(['acceso', 'duda', 'nada'])
 
 def extract_keypoints(results):
     pose = np.array(results['pose'])
