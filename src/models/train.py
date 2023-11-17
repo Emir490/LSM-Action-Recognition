@@ -13,7 +13,7 @@ tb_callback = TensorBoard(log_dir)
 model = Sequential([
     LSTM(64, return_sequences=True, input_shape=(30, 1662)),
     LSTM(64),
-    Dense(3, activation='softmax')
+    Dense(actions.shape[0], activation='softmax')
 ])
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])

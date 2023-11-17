@@ -9,7 +9,18 @@ mp_drawing = mp.solutions.drawing_utils
 
 model: Sequential = load_model('model')
 
-colors = [(245, 117, 16), (117, 245, 16), (16, 117, 245)]
+colors = [
+    (245, 117, 16),    # Original Orange
+    (117, 245, 16),    # Original Green
+    (16, 117, 245),    # Original Blue
+    (128, 0, 128),     # Purple
+    (255, 192, 203),   # Pink
+    (255, 255, 0),     # Yellow
+    (0, 255, 255),     # Cyan
+    (255, 0, 255),     # Magenta
+    (192, 192, 192),   # Silver
+    (128, 128, 0)      # Olive
+]
 
 def prob_viz(res, actions, input_frame, colors):
     output_frame = input_frame.copy()
@@ -59,7 +70,7 @@ def extract_keypoints(results):
 sequence = []
 sentence = []
 predictions = []
-threshold = 0.5
+threshold = 0.8
 
 cap = cv2.VideoCapture(0)
 # Set mediapipe model

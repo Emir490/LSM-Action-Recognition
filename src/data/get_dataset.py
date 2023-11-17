@@ -19,5 +19,4 @@ for action in actions:
                         keypoints = extract_keypoints(results)
                         npy_path = os.path.join(DATA_PATH, action, str(sequence), str(frame))
                         np.save(npy_path, keypoints)
-                    
-                    
+                        
