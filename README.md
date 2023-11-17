@@ -25,7 +25,7 @@ Install the required libraries by running:
 To run any script, use the Python module execution syntax. It is crucial to include the `-m` flag for the script to execute correctly.
 
 For example, to train the model, navigate to the project's root directory and run:
-python -m src.models.train
+```python -m src.models.train```
 
 ## Real-time Testing
 To test the model in real-time, ensure you have a functioning webcam. Run the real-time testing script as follows:
