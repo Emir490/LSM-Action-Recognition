@@ -11,7 +11,7 @@ for action in actions:
             pass
 
 for action in actions:
-        with open(f'data/{action}.json', 'r') as file:
+        with open(f'data/Señas/{action}.json', 'r') as file:
             data = json.load(file)
             for sequence in range(NO_SEQUENCES):
                     for frame in range(SEQUENCE_LENGTH):

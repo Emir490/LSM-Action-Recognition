@@ -7,7 +7,7 @@ from ..utils.index import actions
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
 
-model: Sequential = load_model('model')
+model: Sequential = load_model('model_fail')
 
 colors = [
     (245, 117, 16),    # Original Orange
@@ -19,14 +19,31 @@ colors = [
     (0, 255, 255),     # Cyan
     (255, 0, 255),     # Magenta
     (192, 192, 192),   # Silver
-    (128, 128, 0)      # Olive
+    (128, 128, 0),     # Olive
+    (0, 0, 128),       # Navy Blue
+    (128, 0, 0),       # Maroon
+    (255, 165, 0),     # Orange
+    (0, 128, 0),       # Dark Green
+    (75, 0, 130),      # Indigo
+    (255, 20, 147),    # Deep Pink
+    (70, 130, 180)     # Steel Blue
 ]
 
 def prob_viz(res, actions, input_frame, colors):
     output_frame = input_frame.copy()
+    # Adjust these parameters to change the size and position of the rectangles
+    rect_start_y = 30   # Starting y-coordinate for the first rectangle
+    rect_height = 20    # Height of each rectangle
+    spacing = 25        # Space between rectangles
+    text_offset = 15    # Offset for text placement
+
     for num, prob in enumerate(res):
-        cv2.rectangle(output_frame, (0,60+num*40), (int(prob*100), 90+num*40), colors[num], -1)
-        cv2.putText(output_frame, actions[num], (0, 85+num*40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+        # Calculate the y-coordinate for the current rectangle
+        rect_y = rect_start_y + num * spacing
+        # Draw the rectangle
+        cv2.rectangle(output_frame, (0, rect_y), (int(prob * 100), rect_y + rect_height), colors[num], -1)
+        # Put the text
+        cv2.putText(output_frame, actions[num], (0, rect_y + text_offset), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
 
     return output_frame
 
